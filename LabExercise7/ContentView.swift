@@ -23,7 +23,7 @@ struct ContentView: View {
                 
                 List(books) { book in
                     NavigationLink {
-                        Text("Placeholder for detail: \(book.title)")
+                        DetailView(book: book)   // pass in the selected book
                     } label: {
                         VStack(alignment: .leading) {
                             Text(book.title)
