@@ -1,4 +1,5 @@
-//
+
+
 //  ContentView.swift
 //  LabExercise7
 //
@@ -8,17 +9,36 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let books = Book.sampleBooks
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            VStack(alignment: .leading) {
+                
+                Text("Welcome!")
+                    .font(.largeTitle)
+                    .bold()
+                    .padding(.horizontal)
+                
+                List(books) { book in
+                    NavigationLink {
+                        Text("Placeholder for detail: \(book.title)")
+                    } label: {
+                        VStack(alignment: .leading) {
+                            Text(book.title)
+                                .font(.headline)
+                            Text(book.author)
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Home")
         }
-        .padding()
     }
 }
-
 #Preview {
     ContentView()
 }
