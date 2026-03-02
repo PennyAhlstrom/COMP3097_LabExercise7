@@ -21,6 +21,12 @@ struct InfoView: View {
                 .padding(.horizontal)
 
             Spacer()
+            
+            Button("Go Back to Home") {
+                            path.removeLast(path.count)      // navigate back to root
+                        }
+                        .buttonStyle(.borderedProminent)
+            
         }
         .padding()
         .navigationTitle("Info")
@@ -29,7 +35,8 @@ struct InfoView: View {
 }
 
 #Preview {
-    NavigationStack {
-        InfoView()
+    @Previewable @State var path = NavigationPath()
+    NavigationStack(path: $path) {
+        InfoView(path: $path)
     }
 }
