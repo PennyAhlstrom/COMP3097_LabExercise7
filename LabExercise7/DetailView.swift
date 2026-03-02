@@ -22,9 +22,13 @@ struct DetailView: View {
 
             Spacer()
             
-            // TODO: Needs to be wired to InfoView still
-            Text("Info screen button goes here next")
-                .foregroundColor(.gray)
+            NavigationLink {
+                InfoView()
+            } label: {
+                Text("Go to Info")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
         }
         .padding()
         .navigationTitle("Detail")
