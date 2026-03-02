@@ -5,3 +5,33 @@
 //  Created by Penny Ahlstrom on 2026-03-02.
 //
 
+import SwiftUI
+
+struct DetailView: View {
+    let book: Book   // the data gets passed in from home
+
+    var body: some View {
+        VStack(spacing: 12) {
+            Text(book.title)
+                .font(.title)
+                .bold()
+
+            Text("by \(book.author)")
+                .font(.title3)
+                .foregroundColor(.secondary)
+
+            Spacer()
+            
+            // TODO: Needs to be wired to InfoView still
+            Text("Info screen button goes here next")
+                .foregroundColor(.gray)
+        }
+        .padding()
+        .navigationTitle("Detail")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+#Preview {
+    DetailView(book: Book.sampleBooks[0])
+}
