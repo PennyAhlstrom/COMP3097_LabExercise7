@@ -1,5 +1,5 @@
 //
-//  DetailView.swift
+//  Model.swift
 //  LabExercise7
 //
 //  Created by Penny Ahlstrom on 2026-03-02.
