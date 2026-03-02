@@ -10,6 +10,8 @@ import SwiftUI
 struct DetailView: View {
     let book: Book   // the data gets passed in from home
 
+    @Binding var path: NavigationPath // accept path binding
+    
     var body: some View {
         VStack(spacing: 12) {
             Text(book.title)
