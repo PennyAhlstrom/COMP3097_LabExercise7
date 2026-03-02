@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct InfoView: View {
+    @Binding var path: NavigationPath // add navigation path binding
     var body: some View {
         VStack(spacing: 16) {
             Text("About This App")
