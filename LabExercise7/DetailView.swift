@@ -25,7 +25,7 @@ struct DetailView: View {
             Spacer()
             
             NavigationLink {
-                InfoView()
+                InfoView(path: $path) // pass in the path
             } label: {
                 Text("Go to Info")
                     .frame(maxWidth: .infinity)
@@ -39,5 +39,8 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailView(book: Book.sampleBooks[0])
+    @Previewable @State var path = NavigationPath()
+    NavigationStack(path: $path) {
+        DetailView(book: Book.sampleBooks[0], path: $path)
+    }
 }
