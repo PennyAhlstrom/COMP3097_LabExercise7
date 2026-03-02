@@ -11,9 +11,10 @@ import SwiftUI
 struct ContentView: View {
     
     let books = Book.sampleBooks
+    @State private var path = NavigationPath() // Add navigation path variable
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) { // use the path variable
             VStack(alignment: .leading) {
                 
                 Text("Welcome!")
@@ -23,7 +24,7 @@ struct ContentView: View {
                 
                 List(books) { book in
                     NavigationLink {
-                        DetailView(book: book)   // pass in the selected book
+                        DetailView(book: book, path: $path)   // pass in the selected book and the navigation path
                     } label: {
                         VStack(alignment: .leading) {
                             Text(book.title)
