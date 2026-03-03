@@ -1,5 +1,5 @@
 //
-//  Untitled.swift
+//  InfoView.swift
 //  LabExercise7
 //
 //  Created by Penny Ahlstrom on 2026-03-02.
@@ -9,6 +9,7 @@ import SwiftUI
 
 struct InfoView: View {
     @Binding var path: NavigationPath // add navigation path binding
+    
     var body: some View {
         VStack(spacing: 16) {
             Text("About This App")
@@ -23,7 +24,7 @@ struct InfoView: View {
             Spacer()
             
             Button("Go Back to Home") {
-                            path.removeLast(path.count)      // navigate back to root
+                            path = NavigationPath()      // reset the navigation path to navigate back to root/home
                         }
                         .buttonStyle(.borderedProminent)
             

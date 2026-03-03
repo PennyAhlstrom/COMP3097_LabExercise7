@@ -8,6 +8,12 @@
 
 import SwiftUI
 
+enum Route: Hashable {
+    case detail(Book)
+    case info
+}
+
+
 struct ContentView: View {
     
     let books = Book.sampleBooks
@@ -15,28 +21,28 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack(path: $path) { // use the path variable
-            VStack(alignment: .leading) {
-                
-                Text("Welcome!")
+            Text("Welcome!")
                     .font(.largeTitle)
                     .bold()
-                    .padding(.horizontal)
-                
-                List(books) { book in
-                    NavigationLink {
-                        DetailView(book: book, path: $path)   // pass in the selected book and the navigation path
-                    } label: {
-                        VStack(alignment: .leading) {
-                            Text(book.title)
-                                .font(.headline)
-                            Text(book.author)
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
-                        }
+                    .padding(.vertical, 6)
+            
+            List(books) { book in
+                NavigationLink(value: Route.detail(book)) {
+                    VStack(alignment: .leading) {
+                        Text(book.title).font(.headline)
+                        Text(book.author).font(.subheadline).foregroundColor(.gray)
                     }
                 }
             }
             .navigationTitle("Home")
+            .navigationDestination(for: Route.self) { route in
+                            switch route {
+                            case .detail(let book):
+                                DetailView(book: book, path: $path)
+                            case .info:
+                                InfoView(path: $path)
+                            }
+                        }
         }
     }
 }
